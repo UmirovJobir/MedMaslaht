@@ -2,12 +2,19 @@ from django.contrib import admin
 from django.utils.html import format_html
 
 from .models import (
+    # WeekDay,
     Specialization,
     Doctor,
     Clinic,
     Availability,
     BookedTime,
+
 )
+
+# @admin.register(WeekDay)
+# class WeekDayAdmin(admin.ModelAdmin):
+#     list_display = ['id', 'day']
+#     list_display_links = ['id', 'day']
 
 
 @admin.register(Clinic)
@@ -35,8 +42,9 @@ class AvailabilityInline(admin.TabularInline):
 class DoctorAdmin(admin.ModelAdmin):
     inlines = [AvailabilityInline]
     list_display = ['id', 'full_name', 'phone', 'experience', 'specialization']
+    list_display_links = ['id', 'full_name']
 
 
 @admin.register(BookedTime)
 class BookedTimeAdmin(admin.ModelAdmin):
-    list_display = ['id', 'doctor', 'user', 'start_time', 'end_time', 'day']
+    list_display = ['id', 'doctor', 'user', 'start', 'end', 'day']

@@ -31,8 +31,8 @@ class Doctor(models.Model):
 
 class Availability(models.Model):
     doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE, related_name='availabilities')
-    start_time = models.TimeField()
-    end_time = models.TimeField()
+    start = models.TimeField()
+    end = models.TimeField()
     day = models.CharField(max_length=10, choices=[
         ('Monday', 'Monday'),
         ('Tuesday', 'Tuesday'),
@@ -47,6 +47,6 @@ class Availability(models.Model):
 class BookedTime(models.Model):
     doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE, related_name='booked_times')
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='users')
-    start_time = models.TimeField()
-    end_time = models.TimeField()
+    start = models.TimeField()
+    end = models.TimeField()
     day = models.DateField()
